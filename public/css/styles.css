@@ -4,10 +4,10 @@ h2 {
 }
 /* Para projetos Docsify e modernos que usam variáveis */
 :root {
-  --sidebar-width: 350px; /* Altere este valor para o tamanho desejado */
+  --sidebar-width: 400px; /* Altere este valor para o tamanho desejado */
 }
 
 /* Para temas que usam classes fixas (Jekyll/Outros) */
 .sidebar, .side-bar, aside {
-  width: 350px !important;
+  width: 400px !important;
 }
