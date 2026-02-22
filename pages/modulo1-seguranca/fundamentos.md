@@ -1,27 +1,82 @@
-# 🔒 Fundamentos de Segurança da Informação
+# 🔐 Fundamentos de Segurança da Informação
 
-## O que é Segurança da Informação?
+## 📋 Conceitos Básicos
 
-A segurança da informação é a prática de proteger informações contra acesso, uso, divulgação, interrupção, modificação ou destruição não autorizados.
+### O que é Segurança da Informação?
+- Conjunto de práticas e políticas para proteger informações
+- Abrange processos, tecnologias e pessoas
+- Objetivo: garantir a proteção dos dados em todos os aspectos
 
-## 🎯 Pilares da segurança (CID)
+### Importância no Setor Público
+- Órgãos públicos detêm grandes volumes de dados dos cidadãos
+- Informações sensíveis como saúde, finanças e dados pessoais
+- Responsabilidade legal e ética com a sociedade
+
+## 🎯 Pilares da Segurança (CID)
 
 ### 🔐 Confidencialidade
-Garantir que a informação seja acessível apenas por pessoas autorizadas.
+- **Definição:** Acesso apenas por pessoas autorizadas
+- **Exemplos:**
+  - Controle de acesso a sistemas
+  - Criptografia de dados
+  - Classificação da informação
+- **No serviço público:** Servidores acessam apenas processos de sua competência
 
 ### 📊 Integridade
-Assegurar que a informação não seja alterada de forma não autorizada.
+- **Definição:** Garantia que os dados não foram alterados
+- **Exemplos:**
+  - Assinatura digital
+  - Hash e checksums
+  - Logs de auditoria
+- **No serviço público:** Documentos oficiais com registro de alterações
 
 ### ✅ Disponibilidade
-Garantir que a informação esteja disponível quando necessário.
+- **Definição:** Informação disponível quando necessário
+- **Exemplos:**
+  - Redundância de sistemas
+  - Backups regulares
+  - Planos de contingência
+- **No serviço público:** Sistemas de atendimento ao cidadão 24/7
 
-<div class="tip">
-💡 **Para o servidor público:** A segurança começa com pequenas ações diárias.
-</div>
+## 🔄 Pilares Complementares
 
-## 📚 Legislação relacionada
+### Autenticidade
+- Garantia que a informação é de quem diz ser
+- Uso de certificados digitais (ICP-Brasil)
+- Biometria e outros fatores de autenticação
 
-- Decreto nº 9.637/2018 - Política Nacional de Segurança da Informação
-- LGPD - Lei 13.709/2018
+### Irretratabilidade (Não-repúdio)
+- Impossibilidade de negar autoria
+- Logs e trilhas de auditoria
+- Assinaturas digitais com validade jurídica
+
+### Conformidade
+- Adequação a leis e normas
+- LGPD, LAI, Decretos e Instruções Normativas
+- Padrões e boas práticas de mercado
+
+## 🏢 Segurança da Informação vs Cibersegurança
+
+| Aspecto | Segurança da Informação | Cibersegurança |
+|---------|------------------------|----------------|
+| **Escopo** | Informação em qualquer formato | Apenas ambiente digital |
+| **Abrangência** | Físico, digital e humano | Redes, sistemas, ataques |
+| **Exemplos** | Documentos em papel, descarte seguro | Firewall, antivírus, hackers |
+
+## 📚 Legislação Aplicável
+
+- **Decreto nº 9.637/2018:** Política Nacional de Segurança da Informação
+- **IN GSI/PR nº 1/2020:** Estrutura de segurança cibernética
+- **LGPD (Lei 13.709/2018):** Proteção de dados pessoais
+- **Decreto nº 10.222/2020:** Estratégia Nacional de Segurança Cibernética
+
+## ✅ Checklist para Servidores
+
+- [ ] Uso de senhas fortes e exclusivas
+- [ ] Autenticação multifator ativada
+- [ ] Bloquear tela ao se ausentar
+- [ ] Não compartilhar credenciais
+- [ ] Manter softwares atualizados
+- [ ] Relatar incidentes à TI
 
 **[⬆ Voltar ao topo](#)**
