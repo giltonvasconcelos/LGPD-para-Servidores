@@ -1,23 +1,232 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guia de Proteção de Dados</title>
+  <title>🔐 Proteção de Dados - Setor Público</title>
+  
+  <!-- Tema padrão -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  
+  <!-- CSS customizado para sidebar colapsável -->
+  <style>
+    :root {
+      --sidebar-width: 300px;
+      --sidebar-collapsed-width: 0px;
+    }
+    
+    /* Botão de toggle da sidebar */
+    .sidebar-toggle {
+      position: fixed;
+      left: 20px;
+      bottom: 20px;
+      width: 40px;
+      height: 40px;
+      background: #1a3b5d;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      border: 2px solid #ffd966;
+      transition: all 0.3s;
+    }
+    
+    .sidebar-toggle:hover {
+      background: #2a4f73;
+      transform: scale(1.1);
+    }
+    
+    .sidebar-toggle .arrow {
+      font-size: 20px;
+      transition: transform 0.3s;
+    }
+    
+    /* Sidebar colapsável */
+    .sidebar {
+      transition: transform 0.3s ease !important;
+      width: var(--sidebar-width) !important;
+    }
+    
+    /* Conteúdo principal se ajusta */
+    .content {
+      transition: margin-left 0.3s ease !important;
+      margin-left: var(--sidebar-width) !important;
+    }
+    
+    /* Estado colapsado */
+    body.sidebar-collapsed .sidebar {
+      transform: translateX(calc(-1 * var(--sidebar-width))) !important;
+    }
+    
+    body.sidebar-collapsed .content {
+      margin-left: 0 !important;
+    }
+    
+    body.sidebar-collapsed .sidebar-toggle .arrow {
+      transform: rotate(180deg);
+    }
+    
+    /* Personalização da sidebar */
+    .sidebar {
+      background: linear-gradient(180deg, #1a3b5d 0%, #0f2a44 100%);
+      color: white;
+    }
+    
+    .sidebar .sidebar-nav {
+      padding: 20px 15px;
+      color: rgba(255,255,255,0.9);
+    }
+    
+    .sidebar ul li a {
+      color: rgba(255,255,255,0.9) !important;
+      border-left: 3px solid transparent;
+      transition: all 0.2s;
+      margin: 5px 0;
+    }
+    
+    .sidebar ul li a:hover {
+      color: #ffd966 !important;
+      border-left-color: #ffd966;
+      background: rgba(255,215,0,0.1);
+    }
+    
+    .sidebar ul li.active > a {
+      color: #ffd966 !important;
+      border-left-color: #ffd966;
+      background: rgba(255,215,0,0.15);
+      font-weight: 600;
+    }
+    
+    /* Títulos dos módulos */
+    .sidebar ul li p {
+      color: #ffd966 !important;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin: 15px 0 5px 0;
+      padding-bottom: 5px;
+      border-bottom: 2px solid rgba(255,215,0,0.3);
+    }
+    
+    /* Scrollbar personalizada */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    .sidebar::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.1);
+    }
+    
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #ffd966;
+      border-radius: 3px;
+    }
+    
+    /* Cabeçalho do site */
+    .app-name {
+      background: rgba(0,0,0,0.2);
+      padding: 15px !important;
+      margin: 0 !important;
+      border-bottom: 2px solid #ffd966;
+    }
+    
+    .app-name a {
+      color: white !important;
+      font-size: 1.3rem;
+      font-weight: 300;
+    }
+    
+    .app-name a span {
+      font-weight: 700;
+      color: #ffd966;
+    }
+    
+    /* Melhorias no conteúdo */
+    .markdown-section {
+      max-width: 1000px;
+      padding: 30px 50px;
+    }
+    
+    .markdown-section h1 {
+      color: #1a3b5d;
+      border-bottom: 3px solid #ffd966;
+      padding-bottom: 10px;
+    }
+    
+    .markdown-section h2 {
+      color: #2c3e50;
+    }
+    
+    /* Dicas visuais */
+    .tip, .warning {
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+    
+    .tip {
+      background: #e1f5fe;
+      border-left: 4px solid #0288d1;
+    }
+    
+    .warning {
+      background: #fff3e0;
+      border-left: 4px solid #ff9800;
+    }
+  </style>
 </head>
 <body>
   <div id="app"></div>
+  
+  <!-- Botão de toggle da sidebar -->
+  <div class="sidebar-toggle" onclick="toggleSidebar()">
+    <span class="arrow">◀</span>
+  </div>
+  
   <script>
+    // Configuração do Docsify
     window.$docsify = {
-      name: '🔐 Proteção de Dados',
+      name: '<span>🔐</span> Proteção de Dados',
       repo: '',
-      loadSidebar: true,
+      loadSidebar: 'sidebar.md',
       subMaxLevel: 3,
       auto2top: true,
-      coverpage: false
+      coverpage: false,
+      relativePath: true,
+      themeColor: '#ffd966',
+      // Plugin para manter sidebar colapsada entre páginas
+      plugins: [
+        function(hook, vm) {
+          hook.doneEach(function() {
+            // Recupera estado da sidebar
+            const collapsed = localStorage.getItem('sidebar-collapsed') === 'true';
+            if (collapsed) {
+              document.body.classList.add('sidebar-collapsed');
+            } else {
+              document.body.classList.remove('sidebar-collapsed');
+            }
+          });
+        }
+      ]
+    }
+    
+    // Função para alternar sidebar
+    function toggleSidebar() {
+      document.body.classList.toggle('sidebar-collapsed');
+      const collapsed = document.body.classList.contains('sidebar-collapsed');
+      localStorage.setItem('sidebar-collapsed', collapsed);
     }
   </script>
+  
+  <!-- Scripts do Docsify -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  
+  <!-- Plugins opcionais -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code@2"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/emoji.min.js"></script>
 </body>
 </html>
