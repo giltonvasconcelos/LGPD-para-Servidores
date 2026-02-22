@@ -24,7 +24,7 @@ Este guia reúne os principais temas que sustentam essa jornada:
 - **Aplicação prática**: controle de acessos, criptografia, backup e resposta a incidentes.  
 - **Exemplos**: portais governamentais com autenticação segura, sistemas antifraude em benefícios sociais.  
 
-➡️ [Acesse o módulo completo](./pages/modulo1-seguranca/READMEmd)
+➡️ [Acesse o módulo completo](./pages/modulo1-seguranca/README.md)
 
 ---
 
