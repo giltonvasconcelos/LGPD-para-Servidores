@@ -9,44 +9,96 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
   
   <style>
-    /* Sidebar personalizada */
+    /* ===== VARIÁVEIS ===== */
+    :root {
+      --primary: #1a3b5d;
+      --primary-dark: #0f2a44;
+      --accent: #ffd966;
+      --sidebar-width: 350px;
+    }
+
+    /* ===== SIDEBAR ===== */
     .sidebar {
-      background: linear-gradient(180deg, #1a3b5d 0%, #0f2a44 100%) !important;
+      background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%) !important;
+      width: var(--sidebar-width) !important;
+      transition: transform 0.3s ease !important;
     }
-    
-    .sidebar ul li a {
-      color: rgba(255,255,255,0.9) !important;
-      border-left: 3px solid transparent;
+
+    .sidebar .sidebar-nav {
+      padding: 20px 15px !important;
     }
-    
-    .sidebar ul li a:hover {
-      color: #ffd966 !important;
-      border-left-color: #ffd966;
-      background: rgba(255,215,0,0.1);
-    }
-    
-    .sidebar ul li.active > a {
-      color: #ffd966 !important;
-      border-left-color: #ffd966;
-      background: rgba(255,215,0,0.15);
-    }
-    
+
+    /* Cabeçalho */
     .sidebar .app-name {
-      background: rgba(0,0,0,0.2);
-      border-bottom: 3px solid #ffd966;
+      background: rgba(0, 0, 0, 0.3) !important;
+      padding: 20px 15px !important;
+      border-bottom: 3px solid var(--accent) !important;
       text-align: center;
     }
-    
+
     .sidebar .app-name a {
       color: white !important;
+      font-size: 1.3rem !important;
+      text-decoration: none;
     }
-    
+
     .sidebar .app-name a span {
-      color: #ffd966;
-      font-weight: bold;
+      font-weight: 700;
+      color: var(--accent);
     }
-    
-    /* Botões de controle */
+
+    /* Títulos dos módulos */
+    .sidebar ul li p {
+      color: var(--accent) !important;
+      font-weight: 700 !important;
+      font-size: 1.1rem !important;
+      margin: 25px 0 10px 0 !important;
+      padding-bottom: 5px !important;
+      border-bottom: 2px solid rgba(255, 215, 0, 0.3) !important;
+      text-transform: uppercase;
+    }
+
+    /* Itens do menu */
+    .sidebar ul li a {
+      color: rgba(255, 255, 255, 0.9) !important;
+      border-left: 4px solid transparent !important;
+      padding: 12px 15px 12px 25px !important;
+      margin: 3px 0 !important;
+      transition: all 0.3s !important;
+    }
+
+    .sidebar ul li a:hover {
+      color: var(--accent) !important;
+      border-left-color: var(--accent) !important;
+      background: rgba(255, 215, 0, 0.15) !important;
+      padding-left: 35px !important;
+    }
+
+    .sidebar ul li.active > a {
+      color: var(--accent) !important;
+      border-left-color: var(--accent) !important;
+      background: rgba(255, 215, 0, 0.2) !important;
+    }
+
+    /* ===== CONTEÚDO ===== */
+    .content {
+      transition: margin-left 0.3s ease !important;
+      margin-left: var(--sidebar-width) !important;
+    }
+
+    .markdown-section {
+      max-width: 1000px !important;
+      padding: 40px 50px !important;
+      margin: 30px auto !important;
+    }
+
+    .markdown-section h1 {
+      color: var(--primary) !important;
+      border-bottom: 4px solid var(--accent) !important;
+      padding-bottom: 15px !important;
+    }
+
+    /* ===== BOTÕES ===== */
     .control-buttons {
       position: fixed;
       bottom: 30px;
@@ -55,7 +107,7 @@
       gap: 15px;
       z-index: 1000;
     }
-    
+
     .control-btn {
       width: 55px;
       height: 55px;
@@ -67,30 +119,28 @@
       box-shadow: 0 6px 20px rgba(0,0,0,0.2);
       border: 2px solid white;
       font-size: 1.4rem;
-      background: #1a3b5d;
-      color: white;
       transition: all 0.3s;
     }
-    
-    .control-btn:hover {
-      transform: translateY(-5px) scale(1.1);
-      background: #0f2a44;
+
+    .home-btn {
+      background: var(--primary);
+      color: white;
     }
-    
+
     .toggle-btn {
-      background: #ffd966;
-      color: #1a3b5d;
+      background: var(--accent);
+      color: var(--primary);
     }
-    
-    .toggle-btn:hover {
-      background: #ffe599;
+
+    .control-btn:hover {
+      transform: scale(1.1);
     }
-    
-    /* Sidebar colapsável */
+
+    /* Estado colapsado */
     body.sidebar-collapsed .sidebar {
-      transform: translateX(-100%) !important;
+      transform: translateX(calc(-1 * var(--sidebar-width))) !important;
     }
-    
+
     body.sidebar-collapsed .content {
       margin-left: 0 !important;
     }
@@ -106,11 +156,11 @@
   </div>
 
   <script>
-    // Configuração do Docsify - VERSÃO SIMPLIFICADA
+    // CONFIGURAÇÃO DO DOCSIFY - AQUI ESTÁ A REFERÊNCIA AO SIDEBAR.MD
     window.$docsify = {
       name: '<span>Proteção</span> de Dados',
       repo: '',
-      loadSidebar: '_sidebar.md',  // Arquivo com underscore
+      loadSidebar: 'sidebar.md',        // ← IMPORTANTE: referência ao sidebar.md
       subMaxLevel: 3,
       auto2top: true,
       relativePath: true,
@@ -135,7 +185,7 @@
       window.location.hash = '#/';
     }
 
-    // Estado inicial da sidebar
+    // Estado inicial
     document.addEventListener('DOMContentLoaded', function() {
       const collapsed = localStorage.getItem('sidebar-collapsed') === 'true';
       if (collapsed) {
