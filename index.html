@@ -22,23 +22,99 @@
       background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%) !important;
       width: var(--sidebar-width) !important;
       transition: transform 0.3s ease !important;
+      position: fixed !important;
+      left: 0;
+      top: 0;
+      height: 100vh;
+      z-index: 1000;
+      box-shadow: 4px 0 15px rgba(0,0,0,0.2);
     }
 
-    .sidebar .sidebar-nav {
-      padding: 20px 15px !important;
+    /* Sidebar oculta */
+    .sidebar-hidden .sidebar {
+      transform: translateX(calc(-1 * var(--sidebar-width))) !important;
     }
 
-    /* Cabeçalho */
+    .sidebar-hidden .content {
+      margin-left: 0 !important;
+    }
+
+    /* Ajuste do conteúdo principal */
+    .content {
+      transition: margin-left 0.3s ease !important;
+      margin-left: var(--sidebar-width) !important;
+    }
+
+    /* ===== BOTÃO DE MENU ===== */
+    .menu-toggle {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1100;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      border: 3px solid var(--accent);
+      font-size: 1.5rem;
+      transition: all 0.3s;
+    }
+
+    .menu-toggle:hover {
+      background: var(--primary-dark);
+      transform: scale(1.1);
+    }
+
+    /* Botão quando sidebar está oculta */
+    .sidebar-hidden .menu-toggle {
+      left: 20px;
+      background: var(--accent);
+      color: var(--primary);
+    }
+
+    /* ===== BOTÃO HOME ===== */
+    .home-button {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1100;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      border: 3px solid var(--accent);
+      font-size: 1.8rem;
+      transition: all 0.3s;
+    }
+
+    .home-button:hover {
+      background: var(--primary-dark);
+      transform: scale(1.1) translateY(-5px);
+    }
+
+    /* ===== PERSONALIZAÇÃO DA SIDEBAR ===== */
     .sidebar .app-name {
       background: rgba(0, 0, 0, 0.3) !important;
-      padding: 20px 15px !important;
+      padding: 30px 20px !important;
       border-bottom: 3px solid var(--accent) !important;
       text-align: center;
     }
 
     .sidebar .app-name a {
       color: white !important;
-      font-size: 1.3rem !important;
+      font-size: 1.5rem !important;
       text-decoration: none;
     }
 
@@ -47,15 +123,20 @@
       color: var(--accent);
     }
 
+    .sidebar .sidebar-nav {
+      padding: 20px 15px !important;
+    }
+
     /* Títulos dos módulos */
     .sidebar ul li p {
       color: var(--accent) !important;
       font-weight: 700 !important;
       font-size: 1.1rem !important;
-      margin: 25px 0 10px 0 !important;
-      padding-bottom: 5px !important;
+      margin: 30px 0 15px 0 !important;
+      padding-bottom: 8px !important;
       border-bottom: 2px solid rgba(255, 215, 0, 0.3) !important;
       text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     /* Itens do menu */
@@ -63,8 +144,10 @@
       color: rgba(255, 255, 255, 0.9) !important;
       border-left: 4px solid transparent !important;
       padding: 12px 15px 12px 25px !important;
-      margin: 3px 0 !important;
+      margin: 5px 0 !important;
       transition: all 0.3s !important;
+      font-size: 1rem !important;
+      border-radius: 0 8px 8px 0 !important;
     }
 
     .sidebar ul li a:hover {
@@ -78,17 +161,13 @@
       color: var(--accent) !important;
       border-left-color: var(--accent) !important;
       background: rgba(255, 215, 0, 0.2) !important;
+      font-weight: 600 !important;
     }
 
     /* ===== CONTEÚDO ===== */
-    .content {
-      transition: margin-left 0.3s ease !important;
-      margin-left: var(--sidebar-width) !important;
-    }
-
     .markdown-section {
       max-width: 1000px !important;
-      padding: 40px 50px !important;
+      padding: 40px 60px !important;
       margin: 30px auto !important;
     }
 
@@ -96,71 +175,75 @@
       color: var(--primary) !important;
       border-bottom: 4px solid var(--accent) !important;
       padding-bottom: 15px !important;
+      margin-bottom: 30px !important;
     }
 
-    /* ===== BOTÕES ===== */
-    .control-buttons {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      display: flex;
-      gap: 15px;
-      z-index: 1000;
-    }
-
-    .control-btn {
-      width: 55px;
-      height: 55px;
+    /* ===== BOTÃO DE FECHAR NA SIDEBAR ===== */
+    .close-sidebar {
+      display: none;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.2);
       border-radius: 50%;
-      display: flex;
+      cursor: pointer;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-      border: 2px solid white;
-      font-size: 1.4rem;
-      transition: all 0.3s;
-    }
-
-    .home-btn {
-      background: var(--primary);
       color: white;
+      font-size: 1.5rem;
+      border: 2px solid white;
     }
 
-    .toggle-btn {
-      background: var(--accent);
-      color: var(--primary);
+    /* Mostrar botão de fechar apenas em mobile */
+    @media (max-width: 768px) {
+      .close-sidebar {
+        display: flex;
+      }
     }
 
-    .control-btn:hover {
-      transform: scale(1.1);
-    }
-
-    /* Estado colapsado */
-    body.sidebar-collapsed .sidebar {
-      transform: translateX(calc(-1 * var(--sidebar-width))) !important;
-    }
-
-    body.sidebar-collapsed .content {
-      margin-left: 0 !important;
+    /* ===== RESPONSIVIDADE ===== */
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 280px !important;
+      }
+      
+      .markdown-section {
+        padding: 20px !important;
+        margin: 15px !important;
+      }
+      
+      .menu-toggle {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+      }
     }
   </style>
 </head>
 <body>
   <div id="app"></div>
 
-  <!-- Botões de controle -->
-  <div class="control-buttons">
-    <div class="control-btn toggle-btn" onclick="toggleSidebar()" id="toggleBtn">◀</div>
-    <div class="control-btn home-btn" onclick="goHome()">🏠</div>
+  <!-- Botão do Menu (Hamburger) -->
+  <div class="menu-toggle" onclick="toggleSidebar()" id="menuToggle">
+    ☰
   </div>
 
+  <!-- Botão Home -->
+  <div class="home-button" onclick="goHome()">
+    🏠
+  </div>
+
+  <!-- Botão de fechar na sidebar (para mobile) -->
+  <div class="close-sidebar" onclick="toggleSidebar()">✕</div>
+
   <script>
-    // CONFIGURAÇÃO DO DOCSIFY - AQUI ESTÁ A REFERÊNCIA AO SIDEBAR.MD
+    // CONFIGURAÇÃO DO DOCSIFY
     window.$docsify = {
       name: '<span>Proteção</span> de Dados',
       repo: '',
-      loadSidebar: 'sidebar.md',        // ← IMPORTANTE: referência ao sidebar.md
+      loadSidebar: 'sidebar.md',
       subMaxLevel: 3,
       auto2top: true,
       relativePath: true,
@@ -170,27 +253,67 @@
       search: {
         placeholder: '🔍 Pesquisar...',
         noData: 'Nada encontrado'
-      }
+      },
+      
+      // Plugin para atualizar estado da sidebar
+      plugins: [
+        function(hook, vm) {
+          hook.doneEach(function() {
+            // Fecha sidebar em mobile após clicar em um link
+            if (window.innerWidth <= 768) {
+              document.body.classList.add('sidebar-hidden');
+            }
+            
+            // Adiciona botão de fechar na sidebar
+            const sidebar = document.querySelector('.sidebar');
+            if (sidebar && !sidebar.querySelector('.close-sidebar')) {
+              const closeBtn = document.createElement('div');
+              closeBtn.className = 'close-sidebar';
+              closeBtn.innerHTML = '✕';
+              closeBtn.onclick = toggleSidebar;
+              sidebar.appendChild(closeBtn);
+            }
+          });
+        }
+      ]
     };
 
-    // Funções de controle
+    // Função para alternar sidebar
     function toggleSidebar() {
-      document.body.classList.toggle('sidebar-collapsed');
-      const collapsed = document.body.classList.contains('sidebar-collapsed');
-      localStorage.setItem('sidebar-collapsed', collapsed);
-      document.getElementById('toggleBtn').innerHTML = collapsed ? '▶' : '◀';
+      document.body.classList.toggle('sidebar-hidden');
+      const hidden = document.body.classList.contains('sidebar-hidden');
+      localStorage.setItem('sidebar-hidden', hidden);
+      
+      // Muda o ícone do botão de menu
+      const menuToggle = document.getElementById('menuToggle');
+      menuToggle.innerHTML = hidden ? '☰' : '✕';
     }
 
+    // Função para ir ao menu principal
     function goHome() {
       window.location.hash = '#/';
     }
 
-    // Estado inicial
+    // Estado inicial da sidebar
     document.addEventListener('DOMContentLoaded', function() {
-      const collapsed = localStorage.getItem('sidebar-collapsed') === 'true';
-      if (collapsed) {
-        document.body.classList.add('sidebar-collapsed');
-        document.getElementById('toggleBtn').innerHTML = '▶';
+      const hidden = localStorage.getItem('sidebar-hidden') === 'true';
+      if (hidden) {
+        document.body.classList.add('sidebar-hidden');
+        document.getElementById('menuToggle').innerHTML = '☰';
+      } else {
+        document.getElementById('menuToggle').innerHTML = '✕';
+      }
+    });
+
+    // Fecha sidebar ao clicar em links no mobile
+    document.addEventListener('click', function(e) {
+      if (window.innerWidth <= 768) {
+        if (e.target.tagName === 'A' && !document.body.classList.contains('sidebar-hidden')) {
+          setTimeout(() => {
+            document.body.classList.add('sidebar-hidden');
+            document.getElementById('menuToggle').innerHTML = '☰';
+          }, 300);
+        }
       }
     });
   </script>
