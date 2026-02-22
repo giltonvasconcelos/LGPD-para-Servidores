@@ -15,23 +15,7 @@
       --primary-dark: #0f2a44;
       --accent: #ffd966;
       --accent-light: #ffe599;
-      --text-light: #ffffff;
-      --text-dark: #333333;
       --sidebar-width: 350px;
-      --header-height: 60px;
-    }
-
-    /* ===== RESET E ESTILOS GLOBAIS ===== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      overflow-x: hidden;
-      background-color: #f8f9fa;
     }
 
     /* ===== SIDEBAR PERSONALIZADA ===== */
@@ -40,18 +24,16 @@
       width: var(--sidebar-width) !important;
       transition: transform 0.3s ease !important;
       box-shadow: 4px 0 15px rgba(0,0,0,0.2) !important;
-      z-index: 100 !important;
     }
 
     .sidebar .sidebar-nav {
-      padding: 20px 15px 40px 15px !important;
+      padding: 20px 15px !important;
     }
 
     /* Cabeçalho da Sidebar */
     .sidebar .app-name {
       background: rgba(0, 0, 0, 0.3) !important;
       padding: 20px 15px !important;
-      margin: 0 !important;
       border-bottom: 3px solid var(--accent) !important;
       text-align: center;
       position: sticky;
@@ -64,15 +46,6 @@
       font-size: 1.3rem !important;
       font-weight: 300 !important;
       text-decoration: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .sidebar .app-name a:before {
-      content: "🔐";
-      font-size: 2rem;
     }
 
     .sidebar .app-name a span {
@@ -91,7 +64,6 @@
       text-transform: uppercase;
       letter-spacing: 1px;
       background: rgba(255, 215, 0, 0.1);
-      border-radius: 5px 5px 0 0;
     }
 
     /* Itens do menu */
@@ -102,10 +74,6 @@
       margin: 3px 0 !important;
       transition: all 0.3s !important;
       font-size: 0.95rem !important;
-      border-radius: 0 8px 8px 0 !important;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
 
     .sidebar ul li a:hover {
@@ -122,80 +90,31 @@
       font-weight: 600 !important;
     }
 
-    /* Scrollbar personalizada */
-    .sidebar::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    .sidebar::-webkit-scrollbar-track {
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    .sidebar::-webkit-scrollbar-thumb {
-      background: var(--accent);
-      border-radius: 4px;
-    }
-
     /* ===== CONTEÚDO PRINCIPAL ===== */
     .content {
       transition: margin-left 0.3s ease !important;
       margin-left: var(--sidebar-width) !important;
-      background-color: #f8f9fa;
-      min-height: 100vh;
     }
 
     .markdown-section {
       max-width: 1000px !important;
       padding: 40px 50px !important;
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 5px 25px rgba(0,0,0,0.05);
       margin: 30px auto !important;
     }
 
-    /* Tipografia */
     .markdown-section h1 {
       color: var(--primary) !important;
       border-bottom: 4px solid var(--accent) !important;
       padding-bottom: 15px !important;
       margin-bottom: 30px !important;
-      font-weight: 600 !important;
-      font-size: 2.2rem !important;
     }
 
     .markdown-section h2 {
       color: var(--primary-dark) !important;
       margin-top: 45px !important;
-      margin-bottom: 20px !important;
-      font-weight: 500 !important;
-      font-size: 1.8rem !important;
     }
 
-    .markdown-section h3 {
-      color: #34495e !important;
-      margin: 35px 0 15px !important;
-      font-size: 1.4rem !important;
-    }
-
-    .markdown-section p {
-      line-height: 1.8 !important;
-      color: #444 !important;
-      margin-bottom: 20px !important;
-      font-size: 1.1rem !important;
-    }
-
-    .markdown-section ul, 
-    .markdown-section ol {
-      margin: 15px 0 25px 30px !important;
-    }
-
-    .markdown-section li {
-      margin-bottom: 12px !important;
-      line-height: 1.6 !important;
-      font-size: 1.1rem !important;
-    }
-
-    /* ===== BOTÕES DE CONTROLE ===== */
+    /* ===== BOTÕES ===== */
     .control-buttons {
       position: fixed;
       bottom: 30px;
@@ -213,7 +132,6 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      font-weight: bold;
       box-shadow: 0 6px 20px rgba(0,0,0,0.2);
       transition: all 0.3s;
       border: 2px solid white;
@@ -228,7 +146,6 @@
     .home-btn:hover {
       background: var(--primary-dark);
       transform: translateY(-5px) scale(1.1);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
     }
 
     .toggle-btn {
@@ -250,21 +167,11 @@
       margin-left: 0 !important;
     }
 
-    /* ===== BADGES E DICAS ===== */
-    .tip, .warning, .info, .success {
+    /* ===== TIPOGRAFIA ESPECIAL ===== */
+    .tip, .warning, .info {
       padding: 20px 25px !important;
       border-radius: 12px !important;
       margin: 30px 0 !important;
-      position: relative;
-      font-size: 1.1rem !important;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-    }
-
-    .tip:before, .warning:before, .info:before, .success:before {
-      font-weight: bold;
-      display: block;
-      margin-bottom: 12px;
-      font-size: 1.2rem;
     }
 
     .tip {
@@ -272,149 +179,14 @@
       border-left: 6px solid #1976d2 !important;
     }
 
-    .tip:before {
-      content: "💡 DICA";
-      color: #1976d2;
-    }
-
     .warning {
       background: #fff3e0 !important;
       border-left: 6px solid #f57c00 !important;
     }
 
-    .warning:before {
-      content: "⚠️ ATENÇÃO";
-      color: #f57c00;
-    }
-
     .info {
       background: #e8f5e9 !important;
       border-left: 6px solid #388e3c !important;
-    }
-
-    .info:before {
-      content: "📌 IMPORTANTE";
-      color: #388e3c;
-    }
-
-    .success {
-      background: #e0f2f1 !important;
-      border-left: 6px solid #00796b !important;
-    }
-
-    .success:before {
-      content: "✅ SUCESSO";
-      color: #00796b;
-    }
-
-    /* ===== TABELAS ===== */
-    .markdown-section table {
-      border-collapse: collapse !important;
-      width: 100% !important;
-      margin: 30px 0 !important;
-      border-radius: 12px !important;
-      overflow: hidden !important;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08) !important;
-    }
-
-    .markdown-section th {
-      background: var(--primary) !important;
-      color: white !important;
-      font-weight: 600 !important;
-      padding: 15px !important;
-      font-size: 1.1rem !important;
-    }
-
-    .markdown-section td {
-      padding: 15px !important;
-      border-bottom: 1px solid #e9ecef !important;
-      font-size: 1rem !important;
-    }
-
-    .markdown-section tr:last-child td {
-      border-bottom: none !important;
-    }
-
-    .markdown-section tr:hover {
-      background: #f8f9fa !important;
-    }
-
-    /* ===== CARDS E DESTAQUES ===== */
-    .card {
-      background: #f8f9fa;
-      border-radius: 12px;
-      padding: 25px;
-      margin: 30px 0;
-      border: 1px solid #e9ecef;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.03);
-    }
-
-    .card h3 {
-      margin-top: 0 !important;
-      color: var(--primary) !important;
-    }
-
-    /* ===== PROGRESSO E METADADOS ===== */
-    .page-meta {
-      background: #f1f3f5;
-      padding: 10px 20px;
-      border-radius: 30px;
-      display: inline-block;
-      margin-bottom: 25px;
-      font-size: 0.95rem;
-      color: #666;
-      border: 1px solid #dee2e6;
-    }
-
-    .breadcrumb {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-      color: #666;
-      font-size: 0.95rem;
-    }
-
-    .breadcrumb a {
-      color: var(--primary);
-      text-decoration: none;
-    }
-
-    .breadcrumb a:hover {
-      text-decoration: underline;
-    }
-
-    /* ===== RESPONSIVIDADE ===== */
-    @media (max-width: 768px) {
-      .sidebar {
-        width: 280px !important;
-      }
-      
-      .markdown-section {
-        padding: 20px !important;
-        margin: 15px !important;
-      }
-      
-      .control-buttons {
-        bottom: 20px;
-        right: 20px;
-        gap: 10px;
-      }
-      
-      .control-btn {
-        width: 45px;
-        height: 45px;
-        font-size: 1.2rem;
-      }
-    }
-
-    /* ===== ANIMAÇÕES ===== */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .markdown-section {
-      animation: fadeIn 0.5s ease;
     }
   </style>
 </head>
@@ -423,21 +195,21 @@
 
   <!-- Botões de controle -->
   <div class="control-buttons">
-    <div class="control-btn toggle-btn" onclick="toggleSidebar()" title="Expandir/Recolher menu" id="toggleBtn">◀</div>
-    <div class="control-btn home-btn" onclick="goHome()" title="Menu principal">🏠</div>
+    <div class="control-btn toggle-btn" onclick="toggleSidebar()" id="toggleBtn">◀</div>
+    <div class="control-btn home-btn" onclick="goHome()">🏠</div>
   </div>
 
   <script>
-    // Configuração do Docsify
+    // CONFIGURAÇÃO PRINCIPAL DO DOCSIFY
     window.$docsify = {
       // Nome do site
       name: '<span>Proteção</span> de Dados',
       
-      // Repositório vazio para uso local
-      repo: '',
-      
       // Arquivo de sidebar
       loadSidebar: 'sidebar.md',
+      
+      // Arquivo inicial
+      homepage: 'README.md',
       
       // Nível máximo de sub-items
       subMaxLevel: 3,
@@ -445,16 +217,10 @@
       // Auto rolar para o topo
       auto2top: true,
       
-      // Não usar coverpage
-      coverpage: false,
-      
-      // Caminhos relativos à pasta raiz
+      // Caminhos relativos (importante para a pasta pages)
       relativePath: true,
       
-      // Página inicial (home)
-      homepage: 'README.md',
-      
-      // Configuração da busca
+      // Habilitar busca
       search: {
         maxAge: 86400000,
         paths: 'auto',
@@ -463,32 +229,9 @@
         depth: 4
       },
       
-      // Configuração de emojis
-      emoji: {
-        '🔒': '🔒',
-        '⚠️': '⚠️',
-        '👤': '👤',
-        '🚨': '🚨',
-        '🏛️': '🏛️',
-        '📘': '📘',
-        '👥': '👥',
-        '🔢': '🔢',
-        '🌐': '🌐',
-        '⚙️': '⚙️',
-        '📋': '📋',
-        '🔑': '🔑',
-        '⚖️': '⚖️',
-        '🛡️': '🛡️',
-        '🇪🇺': '🇪🇺',
-        '📢': '📢',
-        '🏢': '🏢',
-        '🤝': '🤝',
-        '🔄': '🔄',
-        '💡': '💡',
-        '🤖': '🤖',
-        '🔐': '🔐',
-        '🏆': '🏆',
-        '🚀': '🚀'
+      // Roteamento - Configuração crucial para encontrar pages/
+      alias: {
+        '/.*/_sidebar.md': '/_sidebar.md'
       },
       
       // Plugins
@@ -504,20 +247,6 @@
               document.body.classList.remove('sidebar-collapsed');
               document.getElementById('toggleBtn').innerHTML = '◀';
             }
-            
-            // Adiciona classes para formatação
-            document.querySelectorAll('.tip').forEach(el => {
-              el.classList.add('tip');
-            });
-            document.querySelectorAll('.warning').forEach(el => {
-              el.classList.add('warning');
-            });
-            document.querySelectorAll('.info').forEach(el => {
-              el.classList.add('info');
-            });
-            
-            // Adiciona metadados nas páginas
-            addPageMetadata();
           });
         }
       ]
@@ -538,34 +267,6 @@
       window.location.hash = '#/';
     }
 
-    // Função para adicionar metadados às páginas
-    function addPageMetadata() {
-      // Evita adicionar na página inicial
-      if (window.location.hash === '#/' || window.location.hash === '') {
-        return;
-      }
-      
-      // Tenta extrair módulo e tópico da URL
-      const hash = window.location.hash;
-      const match = hash.match(/pages\/modulo\d+[^\/]*\/([^\.]+)/);
-      
-      if (match) {
-        const pageName = match[1].replace(/-/g, ' ');
-        const moduleName = hash.split('/')[1].replace(/-/g, ' ').replace('modulo', 'Módulo ');
-        
-        const metaHTML = `
-          <div class="page-meta">
-            📖 ${moduleName} • ${pageName.charAt(0).toUpperCase() + pageName.slice(1)}
-          </div>
-        `;
-        
-        const content = document.querySelector('.markdown-section');
-        if (content && !content.querySelector('.page-meta')) {
-          content.insertAdjacentHTML('afterbegin', metaHTML);
-        }
-      }
-    }
-
     // Inicializa seta da sidebar
     document.addEventListener('DOMContentLoaded', function() {
       const collapsed = localStorage.getItem('sidebar-collapsed') === 'true';
@@ -580,11 +281,5 @@
   <script src="//cdn.jsdelivr.net/npm/docsify-copy-code@2"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/emoji.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/external-script.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
-  
-  <!-- Prism para syntax highlighting -->
-  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-markdown.min.js"></script>
 </body>
 </html>
