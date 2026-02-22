@@ -1,7 +1,3 @@
-Aqui está o arquivo **`dados-anonimizados.md`** completo e organizado em um único arquivo:
-
-## 📁 **Página: pages/modulo2-lgpd/dados-anonimizados.md**
-
 ```markdown
 # 🔢 Dados Anonimizados
 
