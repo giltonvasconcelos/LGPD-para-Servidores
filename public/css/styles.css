@@ -2,3 +2,11 @@
 h2 {
   border: none !important;
 }
+/* Ajuste da largura da sidebar - aumentar 20px */
+.sidebar {
+  width: 320px !important;
+}
+
+.content {
+  left: 320px !important;
+}
