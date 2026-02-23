@@ -3,13 +3,13 @@ h2 {
   border: none !important;
 }
 
-/* Ajuste da largura da sidebar - aumentar 20px (de 300px para 320px) */
+/* Ajuste da largura da sidebar - aumentar 20px (de 300px para 350px) */
 .sidebar {
-  width: 320px !important; /* Aumentado de 300px para 320px */
+  width: 350px !important; /* Aumentado de 300px para 350px */
 }
 
 .content {
-  left: 320px !important; /* Mesmo valor da sidebar */
+  left: 350px !important; /* Mesmo valor da sidebar */
 }
 
 /* Responsividade para mobile */
