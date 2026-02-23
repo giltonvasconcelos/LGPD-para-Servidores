@@ -72,7 +72,23 @@
       transform: scale(1.1);
     }*/
 
-    /* Botão quando sidebar está oculta */
+
+    /* Quando o menu está fechado (Estado Collapsed) */
+body.close .sidebar-toggle {
+    left: 20px !important;    /* Distância da esquerda */
+    bottom: 30px !important;  /* Distância do fundo */
+    right: auto !important;   /* Cancela o 'right' para não esticar */
+    top: auto !important;     /* Cancela o 'top' se houver */
+    width: 50px !important;   /* Tamanho fixo da bolinha */
+    height: 50px !important;
+    background: var(--accent) !important; /* Cor de destaque */
+    color: var(--primary) !important;     /* Cor do ícone */
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+    /* Botão quando sidebar está oculta 
     body.sidebar-collapsed .menu-toggle {
       left: 20px;
       bottom: 30px;
@@ -81,7 +97,7 @@
       height: 40px;
       background: var(--accent);
       color: var(--primary);
-    }
+    }*/
 
     /* ===== BOTÃO HOME ===== */
     .home-button {
