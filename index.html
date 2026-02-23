@@ -1,235 +1,120 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🔐 Proteção de Dados no Setor Público</title>
-  
-  <!-- Docsify Theme -->
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
-  
-  <style>
-    /* ===== VARIÁVEIS ===== */
-    :root {
-      --primary: #1a3b5d;
-      --primary-dark: #0f2a44;
-      --accent: #ffd966;
-      --sidebar-width: 350px;
-      --transition: all 0.3s ease;
-    }
-     </script>
-    /* ===== BOTÃO HOME ===== */
-    .home-button {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 60px;
-      height: 60px;
-      background: var(--primary);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 1100;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-      border: 3px solid var(--accent);
-      font-size: 1.8rem;
-      transition: var(--transition);
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    />
+    <meta
+      name="description"
+      content="Um Guia básico sobre a LGPD (Lei Geral de Proteção de Dados). Lei 13.709/2018 que entrou em vigor no Brasil dia 18/09/2020."
+    />
+    <meta name="author" content="@niagalves" />
+    <meta name="robots" content="index, follow" />
 
-    .home-button:hover {
-      background: var(--primary-dark);
-      transform: scale(1.1) translateY(-5px);
-    }
+    <meta property="og:title" content="Guia básico sobre a LGPD" />
+    <meta
+      property="og:description"
+      content="Um Guia básico sobre a LGPD (Lei Geral de Proteção de Dados). Lei 13.709/2018 que entrou em vigor no Brasil dia 18/09/2020."
+    />
+    <meta property="og:url" content="/" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Guia básico sobre a LGPD" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/public/img/metatag.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="791" />
+    <meta property="og:image:height" content="473" />
 
-    /* ===== PERSONALIZAÇÃO DA SIDEBAR ===== */
-    .sidebar .app-name {
-      background: rgba(0, 0, 0, 0.3) !important;
-      padding: 30px 20px !important;
-      border-bottom: 3px solid var(--accent) !important;
-      text-align: center;
-    }
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@niagalves" />
+    <meta name="twitter:title" content="Guia básico sobre a LGPD" />
+    <meta name="twitter:image" content="/public/img/metatag.png" />
 
-    .sidebar .app-name a {
-      color: white !important;
-      font-size: 1.5rem !important;
-      text-decoration: none;
-    }
+    <link
+      rel="stylesheet"
+      data-style-group="themeable"
+      media="(prefers-color-scheme: dark)"
+      href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css"
+    />
+    <link
+      rel="stylesheet"
+      data-style-group="themeable"
+      media="(prefers-color-scheme: light)"
+      href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css"
+    />
+    <link rel="stylesheet" href="/public/css/styles.css" />
+    <!-- Adicionando Font Awesome para o ícone de casa -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="icon" type="image/ico" href="/public/img/favicon.ico" />
 
-    .sidebar .app-name a span {
-      font-weight: 700;
-      color: var(--accent);
-    }
+    <title>Guia básico sobre a LGPD</title>
 
-    .sidebar .sidebar-nav {
-      padding: 20px 15px !important;
-    }
-
-    /* Títulos dos módulos */
-    .sidebar ul li p {
-      color: var(--accent) !important;
-      font-weight: 700 !important;
-      font-size: 1.1rem !important;
-      margin: 30px 0 15px 0 !important;
-      padding-bottom: 8px !important;
-      border-bottom: 2px solid rgba(255, 215, 0, 0.3) !important;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    /* Itens do menu */
-    .sidebar ul li a {
-      color: rgba(255, 255, 255, 0.9) !important;
-      border-left: 4px solid transparent !important;
-      padding: 12px 15px 12px 25px !important;
-      margin: 5px 0 !important;
-      transition: var(--transition) !important;
-      font-size: 1rem !important;
-      border-radius: 0 8px 8px 0 !important;
-    }
-
-    .sidebar ul li a:hover {
-      color: var(--accent) !important;
-      border-left-color: var(--accent) !important;
-      background: rgba(255, 215, 0, 0.15) !important;
-      padding-left: 35px !important;
-    }
-
-    .sidebar ul li.active > a {
-      color: var(--accent) !important;
-      border-left-color: var(--accent) !important;
-      background: rgba(255, 215, 0, 0.2) !important;
-      font-weight: 600 !important;
-    }
-
-    /* ===== CONTEÚDO ===== */
-    .markdown-section {
-      max-width: 1000px !important;
-      padding: 40px 60px !important;
-      margin: 30px auto !important;
-    }
-
-    .markdown-section h1 {
-      color: var(--primary) !important;
-      border-bottom: 4px solid var(--accent) !important;
-      padding-bottom: 15px !important;
-      margin-bottom: 30px !important;
-    }
-
-    /* ===== RESPONSIVIDADE ===== */
-    @media (max-width: 768px) {
-      :root {
-        --sidebar-width: 280px;
+    <!-- Estilo personalizado para o botão home -->
+    <style>
+      .home-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #007bff;
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        z-index: 1000;
+        transition: background-color 0.3s;
       }
-      
-      .markdown-section {
-        padding: 20px !important;
+      .home-button:hover {
+        background-color: #0056b3;
       }
-      
-      .menu-toggle {
-        width: 45px;
-        height: 45px;
-        font-size: 1.3rem;
+      .home-button i {
+        font-size: 24px;
       }
-      
-      /* Sidebar começa fechada no mobile */
-      body:not(.sidebar-collapsed) .sidebar {
-        transform: translateX(-280px);
-      }
-      
-      body:not(.sidebar-collapsed) .content {
-        margin-left: 0;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div id="app"></div>
+    </style>
+  </head>
+  <body>
+    <main id="app"></main>
 
-  <!-- Botão Home -->
-  <div class="home-button" onclick="goHome()">
-    🏠
-  </div>
+    <!-- Botão de menu com ícone de casa (Home) -->
+    <a href="/" class="home-button" title="Página inicial">
+      <i class="fas fa-home"></i>
+    </a>
 
-  <script>
-    // CONFIGURAÇÃO DO DOCSIFY
-    window.$docsify = {
-      name: '<span>Guia Digital </span>Serviço Público',
-      repo: '',
-      loadSidebar: '_sidebar.md',  // ← Seu arquivo de sidebar
-      subMaxLevel: 3,
-      auto2top: true,
-      relativePath: true,
-      homepage: 'README.md',
-      
-      search: {
-        placeholder: '🔍 Pesquisar...',
-        noData: 'Nada encontrado'
-      },
-      
-      // Plugin para atualizar estado
-      plugins: [
-        function(hook, vm) {
-          hook.doneEach(function() {
-            // Verifica se é mobile e ajusta
-            if (window.innerWidth <= 768) {
-              document.body.classList.add('sidebar-collapsed');
-              document.getElementById('menuToggle').innerHTML = '☰';
-            }
-          });
-        }
-      ]
-    };
+    <script>
+      window.$docsify = {
+        name: '<span title="Guia básico LGPD">Guia<b>LGPD</b></span>',
+        nameLink: "/",
+        repo: "https://github.com/niagalves/guia-basico-LGPD",
+        homePage: "/",
+        loadSidebar: true,
+        auto2top: true,
+        subMaxLevel: 1,
+        pagination: {
+          previousText: "Anterior",
+          nextText: "Próximo",
+          crossChapter: false,
+          crossChapterText: false,
+        },
+        search: {
+          maxAge: 86400000,
+          paths: "auto",
+          placeholder: "Digite aqui para pesquisar...",
+          noData: "Nenhum resultado encontrado, tente novamente.",
+          hideOtherSidebarContent: false,
+        },
+      };
+    </script>
 
-    // FUNÇÃO PARA ALTERNAR SIDEBAR (ABRIR/FECHAR)
-    function toggleSidebar() {
-      document.body.classList.toggle('sidebar-collapsed');
-      const collapsed = document.body.classList.contains('sidebar-collapsed');
-      localStorage.setItem('sidebar-collapsed', collapsed);
-      
-      const menuToggle = document.getElementById('menuToggle');
-      menuToggle.innerHTML = collapsed ? '☰' : '✕';
-    }
-
-    // FUNÇÃO PARA VOLTAR AO MENU PRINCIPAL
-    function goHome() {
-      window.location.hash = '#/';
-    }
-
-    // ESTADO INICIAL DA SIDEBAR
-    document.addEventListener('DOMContentLoaded', function() {
-      const collapsed = localStorage.getItem('sidebar-collapsed') === 'true';
-      
-      // No mobile, sempre começa fechada
-      if (window.innerWidth <= 768) {
-        document.body.classList.add('sidebar-collapsed');
-        document.getElementById('menuToggle').innerHTML = '☰';
-      } else {
-        if (collapsed) {
-          document.body.classList.add('sidebar-collapsed');
-          document.getElementById('menuToggle').innerHTML = '☰';
-        } else {
-          document.getElementById('menuToggle').innerHTML = '✕';
-        }
-      }
-    });
-
-    // FECHA SIDEBAR AO CLICAR EM LINK NO MOBILE
-    document.addEventListener('click', function(e) {
-      if (window.innerWidth <= 768 && e.target.tagName === 'A') {
-        setTimeout(() => {
-          document.body.classList.add('sidebar-collapsed');
-          document.getElementById('menuToggle').innerHTML = '☰';
-        }, 300);
-      }
-    });
-  </script>
-
-  <!-- Scripts do Docsify -->
-  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/emoji.min.js"></script>
-</body>
+    <!-- Docsify v4 -->
+    <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+    <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
+    <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
+  </body>
 </html>
