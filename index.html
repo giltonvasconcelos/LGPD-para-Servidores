@@ -46,65 +46,35 @@
       margin-left: var(--sidebar-width) !important;
     }
 
-    /* ===== BOTÃO DE MENU (HAMBURGER) ===== */
-    .menu-toggle {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      width: 50px;
-      height: 50px;
-      background: var(--primary);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 1100;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      border: 3px solid var(--accent);
-      font-size: 1.5rem;
-      transition: var(--transition);
-    }
-
-    .menu-toggle:hover {
+     .menu-toggle:hover {
       background: var(--primary-dark);
       transform: scale(1.1);
     }
 
-       /* 3. Estilizando o botão (Bolinha no Canto Inferior)
-    .sidebar-toggle {
-        display: flex !important;
-        position: fixed !important;
-        bottom: 30px !important; /* Distância do fundo 
-        left: 20px !important;   /* Distância da esquerda 
-        top: auto !important;    /* Garante que não fique no topo 
-        width: 50px !important;
-        height: 50px !important;
-        background: #ffd966 !important; /* Cor Accent (Dourado) 
-        border-radius: 50% !important;
-        border: 2px solid #1a3b5d !important;
-        z-index: 1100 !important;
-        align-items: center;
-        justify-content: center;
-    }*/
-
-    /* Ajusta os 3 risquinhos do menu dentro da bolinha */
-    .sidebar-toggle span {
-        background-color: #1a3b5d !important;
-        width: 25px !important;
-        left: 12px !important;
-        margin: 4px 0 !important;
-    }
-}
-
-    /* Botão quando sidebar está oculta */
-    body.sidebar-collapsed .menu-toggle {
-      left: 20px;
-      background: var(--accent);
-      color: var(--primary);
-    }
-
+   <script>
+      window.$docsify = {
+        name: '<span title="Guia básico LGPD">Guia<b>LGPD</b></span>',
+        nameLink: "/",
+        repo: "https://github.com/niagalves/guia-basico-LGPD",
+        homePage: "/",
+        loadSidebar: true,
+        auto2top: true,
+        subMaxLevel: 1,
+        pagination: {
+          previousText: "Anterior",
+          nextText: "Próximo",
+          crossChapter: false,
+          crossChapterText: false,
+        },
+        search: {
+          maxAge: 86400000,
+          paths: "auto",
+          placeholder: "Digite aqui para pesquisar...",
+          noData: "Nenhum resultado encontrado, tente novamente.",
+          hideOtherSidebarContent: false,
+        },
+      };
+    </script>
     /* ===== BOTÃO HOME ===== */
     .home-button {
       position: fixed;
@@ -234,11 +204,6 @@
 </head>
 <body>
   <div id="app"></div>
-
-  <!-- Botão do Menu (Hamburger) 
-  <div class="menu-toggle" onclick="toggleSidebar()" id="menuToggle">
-    ☰
-  </div>-->
 
   <!-- Botão Home -->
   <div class="home-button" onclick="goHome()">
