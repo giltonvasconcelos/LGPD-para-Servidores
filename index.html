@@ -221,14 +221,15 @@
 
   <script>
     // CONFIGURAÇÃO DO DOCSIFY
-    window.$docsify = {
-      name: '<span>Guia Digital </span>Serviço Público',
-      repo: '',
-      loadSidebar: '_sidebar.md',  // ← Seu arquivo de sidebar
-      subMaxLevel: 3,
-      auto2top: true,
-      relativePath: true,
-      homepage: 'README.md',
+   window.$docsify = {
+  name: '<span>Guia Digital </span>Serviço Público',
+  repo: '',
+  loadSidebar: true,      // Mude de '_sidebar.md' para true (o padrão do Docsify)
+  subMaxLevel: 0,         // Mude para 0 para ELIMINAR o menu duplicado automático
+  auto2top: true,
+  relativePath: true,
+  homepage: 'README.md',  // Certifique-se que o nome do arquivo está correto
+  // ... restanto das configs
       
       search: {
         placeholder: '🔍 Pesquisar...',
