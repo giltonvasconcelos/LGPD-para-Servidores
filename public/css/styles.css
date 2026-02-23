@@ -2,3 +2,27 @@
 h2 {
   border: none !important;
 }
+
+/* Ajuste da largura da sidebar - aumentar 20px (de 300px para 320px) */
+.sidebar {
+  width: 320px !important; /* Aumentado de 300px para 320px */
+}
+
+.content {
+  left: 320px !important; /* Mesmo valor da sidebar */
+}
+
+/* Responsividade para mobile */
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 280px !important; /* Mantém o padrão mobile */
+  }
+  .content {
+    left: 280px !important;
+  }
+}
+
+/* Quando a sidebar estiver oculta no mobile */
+.sidebar.hidden + .content {
+  left: 0 !important;
+}
