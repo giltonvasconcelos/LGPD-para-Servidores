@@ -1,165 +1,151 @@
-/* ============================================================
-   1. ESTRUTURA E COMPORTAMENTO NATIVO (DOCSIFY)
-   ============================================================ */
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <title>🔐 Proteção de Dados no Setor Público</title>
+  
+  <!-- Tema Base do Docsify -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  
+  <style>
+    /* 1. VARIÁVEIS E RESET */
+    :root {
+      --primary: #1a3b5d;
+      --primary-dark: #0f2a44;
+      --accent: #ffd966;
+      --sidebar-width: 350px;
+    }
 
-:root {
-  --primary: #1a3b5d;
-  --primary-dark: #0f2a44;
-  --accent: #ffd966;
-  --sidebar-width: 350px;
-}
+    /* 2. SIDEBAR (MENU AZUL) ENCOSTADO NO TOPO */
+    .sidebar {
+      background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%) !important;
+      width: var(--sidebar-width) !important;
+      border: none !important;
+      top: 0 !important;
+      height: 100vh !important;
+      z-index: 1000 !important;
+      transition: transform 0.3s ease-in-out !important;
+    }
 
-/* Sidebar Fixa no Desktop */
-@media (min-width: 769px) {
-  .sidebar {
-    width: var(--sidebar-width) !important;
-    top: 0 !important;
-    padding-top: 0 !important;
-  }
-  body:not(.close) .content {
-    margin-left: var(--sidebar-width) !important;
-  }
-  .sidebar-toggle {
-    display: none !important; /* Esconde botão no PC */
-  }
-}
+    .sidebar .app-name {
+      background: rgba(0, 0, 0, 0.2) !important;
+      padding: 30px 20px !important;
+      border-bottom: 2px solid var(--accent) !important;
+      margin-top: 0 !important;
+    }
 
-/* Ajustes Críticos para Celular (Mobile) */
-@media (max-width: 768px) {
-  .content {
-    margin-left: 0 !important;
-    width: 100% !important;
-    padding-top: 20px !important;
-  }
+    .sidebar .app-name a {
+      color: white !important;
+      font-size: 1.4rem !important;
+      font-weight: 700;
+      text-decoration: none;
+    }
 
-  .sidebar {
-    width: 280px !important;
-    top: 0 !important;
-    left: 0 !important;
-    height: 100vh !important;
-    transform: translateX(-280px) !important; /* Começa fechado */
-    transition: transform 0.3s ease !important;
-    z-index: 1000 !important;
-  }
+    .sidebar ul li a {
+      color: rgba(255, 255, 255, 0.9) !important;
+      font-size: 16px !important;
+      padding: 12px 15px 12px 25px !important;
+    }
 
-  /* Quando o Docsify abre o menu (remove a classe .close) */
-  body:not(.close) .sidebar {
-    transform: translateX(0) !important;
-  }
+    .sidebar ul li p {
+      color: var(--accent) !important;
+      font-weight: 700 !important;
+      text-transform: uppercase;
+      margin: 25px 0 10px 0 !important;
+      padding: 0 15px !important;
+    }
 
-  /* O BOTÃO "BOLINHA" NO CANTO INFERIOR */
-  .sidebar-toggle {
-    display: flex !important;
-    position: fixed !important;
-    bottom: 30px !important;
-    left: 20px !important;
-    top: auto !important;
-    width: 55px !important;
-    height: 55px !important;
-    background: var(--accent) !important;
-    border: 3px solid var(--primary) !important;
-    border-radius: 50% !important;
-    z-index: 1100 !important;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
-    align-items: center;
-    justify-content: center;
-  }
+    /* 3. COMPORTAMENTO DESKTOP (PC) */
+    @media (min-width: 769px) {
+      body:not(.close) .content {
+        margin-left: var(--sidebar-width) !important;
+      }
+      .sidebar-toggle {
+        display: none !important;
+      }
+    }
 
-  /* Os 3 risquinhos (☰) dentro da bolinha */
-  .sidebar-toggle span {
-    background-color: var(--primary) !important;
-    width: 25px !important;
-    height: 3px !important;
-    left: 15px !important;
-    margin: 4px 0 !important;
-    display: block !important;
-  }
-}
+    /* 4. COMPORTAMENTO MOBILE (CELULAR) - A BOLINHA DOURADA */
+    @media (max-width: 768px) {
+      section.content {
+        margin-left: 0 !important;
+        width: 100% !important;
+        padding: 20px !important;
+        display: block !important;
+      }
 
-/* ============================================================
-   2. ESTILO VISUAL (CORES E FONTES)
-   ============================================================ */
+      /* Sidebar começa escondida no mobile */
+      .sidebar {
+        width: 280px !important;
+        left: -280px !important;
+        position: fixed !important;
+      }
 
-.sidebar {
-  background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%) !important;
-  border: none !important;
-  color: white;
-}
+      /* Quando clica no botão, o Docsify remove a classe .close no mobile */
+      body:not(.close) .sidebar {
+        transform: translateX(280px) !important;
+      }
 
-/* Nome do App no Topo */
-.sidebar .app-name {
-  background: rgba(0, 0, 0, 0.2) !important;
-  padding: 30px 20px !important;
-  border-bottom: 2px solid var(--accent) !important;
-  margin-top: 0 !important;
-}
+      /* BOTÃO BOLINHA NO CANTO INFERIOR ESQUERDO */
+      .sidebar-toggle {
+        display: flex !important;
+        position: fixed !important;
+        bottom: 30px !important;
+        left: 20px !important;
+        top: auto !important;
+        width: 55px !important;
+        height: 55px !important;
+        background: var(--accent) !important;
+        border: 2px solid var(--primary) !important;
+        border-radius: 50% !important;
+        z-index: 1100 !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.4) !important;
+        align-items: center;
+        justify-content: center;
+      }
 
-.sidebar .app-name a {
-  color: white !important;
-  font-size: 1.4rem !important;
-  font-weight: 700;
-}
+      /* Risquinhos do menu (☰) */
+      .sidebar-toggle span {
+        background-color: var(--primary) !important;
+        width: 25px !important;
+        height: 3px !important;
+        display: block !important;
+        margin: 4px auto !important;
+        position: static !important;
+      }
+    }
 
-/* Links da Sidebar */
-.sidebar ul li a {
-  color: rgba(255, 255, 255, 0.9) !important;
-  font-size: 16px !important;
-  padding: 12px 15px 12px 25px !important;
-  transition: all 0.3s;
-}
+    /* 5. ESTILO DO CONTEÚDO */
+    body { font-size: 18px !important; }
+    .markdown-section { max-width: 1000px !important; padding: 40px 60px !important; }
+    .markdown-section h1 { color: var(--primary) !important; border-bottom: 4px solid var(--accent) !important; }
+    
+    /* Remove botões manuais antigos */
+    .menu-toggle, .home-button { display: none !important; }
+  </style>
+</head>
+<body>
+  <div id="app">Carregando...</div>
 
-.sidebar ul li a:hover, 
-.sidebar ul li.active > a {
-  color: var(--accent) !important;
-  background: rgba(255, 215, 0, 0.1) !important;
-  border-left: 4px solid var(--accent) !important;
-}
+  <script>
+    window.$docsify = {
+      name: '<span>Guia Digital </span>Serviço Público',
+      loadSidebar: true,      // CORRETO: CamelCase oficial
+      subMaxLevel: 0,         // Evita menus duplicados automáticos
+      auto2top: true,
+      relativePath: true,
+      homepage: 'README.md',
+      search: {
+        placeholder: '🔍 Pesquisar...',
+        noData: 'Nada encontrado',
+        depth: 2
+      }
+    };
+  </script>
 
-/* Títulos de Módulos na Sidebar */
-.sidebar ul li p {
-  color: var(--accent) !important;
-  font-weight: 700 !important;
-  text-transform: uppercase;
-  margin: 25px 0 10px 0 !important;
-  padding: 0 15px !important;
-}
-
-/* ============================================================
-   3. CONTEÚDO PRINCIPAL (TABELAS E TEXTOS)
-   ============================================================ */
-
-body {
-  font-size: 18px !important;
-  line-height: 1.6 !important;
-}
-
-.markdown-section {
-  max-width: 1000px !important;
-  padding: 40px 60px !important;
-}
-
-.markdown-section h1 {
-  color: var(--primary) !important;
-  border-bottom: 4px solid var(--accent) !important;
-  padding-bottom: 10px;
-}
-
-.markdown-section table {
-  width: 100% !important;
-  border-collapse: collapse !important;
-  margin: 20px 0;
-}
-
-.markdown-section th {
-  background: var(--primary) !important;
-  color: white !important;
-  padding: 12px;
-}
-
-.markdown-section td {
-  border-bottom: 1px solid #eee;
-  padding: 10px;
-}
-
-/* Esconde qualquer resquício do menu-toggle manual */
-.menu-toggle { display: none !important; }
+  <!-- Scripts Oficiais -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+</body>
+</html>
