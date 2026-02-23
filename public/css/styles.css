@@ -1,12 +1,13 @@
-.docsify-pagination-container,
+..docsify-pagination-container,
 h2 {
   border: none !important;
 }
-/* Ajuste da largura da sidebar - aumentar 20px */
-.sidebar {
+
+/* Aumentar largura apenas quando o sidebar está visível */
+.sidebar:not(.hidden) {
   width: 320px !important;
 }
 
-.content {
+.sidebar:not(.hidden) + .content {
   left: 320px !important;
 }
