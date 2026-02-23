@@ -17,40 +17,6 @@
       --sidebar-width: 350px;
       --transition: all 0.3s ease;
     }
-
-    /* ===== SIDEBAR COM TOGGLE ===== */
-    .sidebar {
-      width: var(--sidebar-width) !important;
-      background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%) !important;
-      transition: transform 0.3s ease !important;
-      position: fixed !important;
-      left: 0;
-      top: 0;
-      height: 100vh;
-      z-index: 1000;
-      box-shadow: 4px 0 15px rgba(0,0,0,0.2);
-    }
-
-    /* Estado colapsado (escondido) */
-    body.sidebar-collapsed .sidebar {
-      transform: translateX(calc(-1 * var(--sidebar-width))) !important;
-    }
-
-    body.sidebar-collapsed .content {
-      margin-left: 0 !important;
-    }
-
-    /* Conteúdo principal */
-    .content {
-      transition: margin-left 0.3s ease !important;
-      margin-left: var(--sidebar-width) !important;
-    }
-
-     .menu-toggle:hover {
-      background: var(--primary-dark);
-      transform: scale(1.1);
-    }
-
    <script>
       window.$docsify = {
         name: '<span title="Guia básico LGPD">Guia<b>LGPD</b></span>',
