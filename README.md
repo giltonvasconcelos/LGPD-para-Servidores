@@ -3,6 +3,13 @@
 Bem-vindo ao **Guia Completo sobre Segurança da Informação, LGPD, LAI e Inovação no Serviço Público**.  
 Este material foi desenvolvido para apoiar gestores, servidores e cidadãos na compreensão dos principais pilares da transformação digital, garantindo eficiência, transparência e proteção de dados.
 
+## 📘 E-book: Apresentação do Curso
+
+Antes de mergulhar nos módulos, que tal conhecer a visão geral do nosso conteúdo?  
+Baixe o **E-book de Apresentação do Curso** e entenda como a transformação digital pode revolucionar o serviço público, com exemplos práticos, desafios e oportunidades.
+
+➡️ [**Clique aqui para acessar o E-book**](#) *(substitua pelo link real do e-book)*
+
 ---
 
 ## 🌐 Visão Geral
@@ -62,7 +69,20 @@ Este guia reúne os principais temas que sustentam essa jornada:
 - Garantir **proteção de dados e privacidade**.  
 - Estimular a **inovação responsável**.  
 
+## 🎯 Objetivos do Guia
+
+- Apoiar a modernização da gestão pública.  
+- Promover transparência e participação social.  
+- Garantir proteção de dados e privacidade.  
+- Estimular a inovação responsável.
 ---
+
+## 🚀 Acesse o Curso Completo
+
+Quer se aprofundar ainda mais?  
+Inscreva-se no nosso **Curso Completo de Transformação Digital no Serviço Público** e tenha acesso a vídeos, materiais complementares, estudos de caso e certificado ao final.
+
+➡️ [**Clique aqui para acessar o curso**](#) *(substitua pelo link real de acesso ao curso)*
 
 ## 📚 Referências
 
